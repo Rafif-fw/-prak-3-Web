@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                const inputs = [
+                    document.getElementById('name'),
+                    document.getElementById('email'),
+                    document.getElementById('password')
+                ];
+                let isValid = true; 
+                for (let input of inputs) {
+                    if (input.value.trim() === '') {
+                        input.style.borderColor = 'red'; 
+                        isValid = false; 
+                        alert('Isian kolom ' + input.name + ' tidak boleh kosong'); 
+                        break; 
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                }
+                if (isValid) {
+                    alert("Pendaftaran berhasil!");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="registrationForm">
+        <input type="text" id="name" name="name" placeholder="Nama">
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <button type="submit">Daftar</button>
+    </form>
+</body>
+</html>
